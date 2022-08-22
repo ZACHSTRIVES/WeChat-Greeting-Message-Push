@@ -1,7 +1,7 @@
 name: WeChat girlfriend greeting
 on:
   schedule:
-  - cron:  '0 0 * * *'
+  - cron:  '09 23 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
       with:
-        ref: master
+        ref: main
 
     - name: sender
       uses: actions/setup-python@v2
@@ -23,10 +23,13 @@ jobs:
     - run: pip install -r ./requirements.txt && python ./app.py
 
     env:
-      APP_ID: ${{ secrets.APP_ID }}
-      APP_SECRET: ${{ secrets.APP_SECRET }}
-      TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
-      USER_ID: ${{ secrets.USER_ID }}
-      START_DATE: ${{ secrets.START_DATE }}
+      TEMP_ID: ${{ secrets.TEMP_ID }}
+      APPID: ${{ secrets.APPID }}
+      APPSECRET: ${{ secrets.APPSECRET}}
+      WECHAT_ID: ${{ secrets.WECHAT_ID}}
+      ANNIVERSARIES: ${{ secrets.ANNIVERSARIES }}
+      CUSTOM_DATE: ${{ secrets.CUSTOM_DATE}}
+      CUSTOM_DATE_TIME: ${{ secrets.CUSTOM_DATE_TIME }}
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
-      CITY: ${{ secrets.CITY }}
+      REPID_API_KEY: ${{ secrets.REPID_API_KEY }}
+      REPID_API_SECRETE: ${{ secrets.REPID_API_SECRETE}}
